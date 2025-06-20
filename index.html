@@ -1,54 +1,91 @@
 ---
 layout: default
-title: Behind Playar's Alpha App Design
+title: Behind Playar – Alpha App Design Journal
 description: A design narrative exploring the decisions behind the alpha version of the Playar app.
 ---
 
-When we started designing and mapping out the initial experience for Playar’s alpha app, which would essentially be the 0.1 version — a first draft. This early stage meant we would progressively gain clearer understanding into how the app should work, what functionalities it should include, and how to make it delightful and engaging for users. 
+When we started designing and mapping out the initial experience for Playar’s alpha app — essentially version 0.1 — our goal was to build a first draft that could evolve as we better understood what worked and what didn’t. We aimed to make the app delightful, engaging, and purpose-driven.
 
-The design approach was threefold: -
+---
 
-1. **Keep the UI Simple:** A simple and straightforward UI allowed us to test essential functionalities with minimal effort, laying a foundation for later enhancements based on user feedback.
-<br>
-2. **Prototype Early:** Our aim was to not only evaluate how things looked but also how they would feel. Early prototyping provided coaches with tangible interactions, enabling them to give meaningful feedback.
-<br>
-3. **Gather Feedback and Iterate Quickly:** We prioritized obtaining quick and frequent feedback — even from partially developed versions. This iterative process ensured we continuously identified areas for improvement.
+## Our Threefold Design Approach
 
-The input we received from coaches significantly shaped the direction of our app. Coaches expressed a need to compare student performances, access detailed student-specific statistics and understand macro-level performance trends such as averages. These inputs directly influenced the design priorities and functionalities we implemented.
+1. **Keep the UI Simple**  
+   A straightforward interface allowed us to test essential functionalities quickly and build a foundation for more complex features later.
 
-# Design
+2. **Prototype Early**  
+   We tested not just how the app looked, but how it felt. Early feedback from coaches who interacted with rough prototypes gave us valuable insights.
 
-Based on these inputs, we were able to narrow down the core functionalities for the alpha version of the app:
+3. **Gather Feedback and Iterate Quickly**  
+   We prioritized frequent feedback, even from half-built versions, to refine the design continuously and stay aligned with user needs.
 
-- **Leaderboard:** Enables coaches to compare and rank player performances, incorporating an element of gamification to enhance engagement.
-<br>
-- **Player View:** Provides detailed player profiles, offering in-depth statistics and analytics tailored to each individual.
-<br>
-- **Analytics:** Offers a high-level view of overall performance trends, including charts and averages, to help coaches quickly identify patterns and make informed decisions.
+---
 
-![Core_Functionalities](images/Core_Functionalities.png)
+## Insights from Coaches
 
+Coaches shared specific needs:
+- Comparing player performance
+- Accessing player-specific stats
+- Observing macro trends like averages
 
-These core functionalities transitioned into the app's tab bar, accompanied by a **Settings** tab. This structure addressed users immediate questions: "What does this app do, and what can I achieve using it?"
+These inputs shaped the app’s functionality and user flows.
 
-![Tab_Bar](images/Tab_Bar.png)
+---
 
-The important question we asked ourselves while designing was, to inform our decision or design choices better were - 
+## Core Features in the Alpha
 
-- how do we approach this? 
-- Do we gamify it and make the app look and feel playful?
-- Do we keep it's look and feel serious, so it keeps the appeal for caoches and players alike?
-- What's the goal of the app
-- Who is going to use it
-- How does it inform the user of what they see and how they can interact with the app.
+- **Leaderboard**  
+  Compare and rank player performance across metrics — adding a gamified, competitive layer.
 
-We kept asking ourselves questions and tired finding a balance to it.
+- **Player View**  
+  Deep-dive into individual stats and progress, accessible per player.
 
+- **Analytics**  
+  Track macro-level patterns like consistency, power, and range.
 
-## Design
+![Core Functionalities](images/Core_Functionalities.png)
 
-Starting with the leaderboard, I tried to keep the approach to fit well with native and non-native UI elements. Since the alpha was built using Flutter for cross-platform build. The app design is mostly non-native but has familiar elements from native system components. The leaderboard screen is the first screen a coach sees when he logs into the coach side of the app. Leaderboard does two things - a. offers comparisson for coaches to understand who is the best performer and who is not and by how much, etc. For the alpha, the focus was on three categories, consistency, power and range. 
+---
 
-Question is, how does the coach understand what these parameters mean, what values is it looking at, how are these players categorized, what are the values or metrics the coach must be able to see for a better understanding of it. There are players of different age groups, how are they categorized, etc. These were some questions, the leaderboard section had to incorporate in the design approach of it.
+These features became core tabs in the app, alongside a **Settings** tab to personalize the experience.
+
+![Tab Bar](images/Tab_Bar.png)
+
+---
+
+## Key Design Questions We Asked
+
+To inform our decisions, we kept asking:
+- Should the app feel playful or serious?
+- What’s the goal of the app?
+- Who is the primary user?
+- How should we visually guide them?
+
+We designed for balance — engaging but focused.
+
+---
+
+## Leaderboard Design Philosophy
+
+The **Leaderboard** was the entry point for coaches. It offered quick comparison across players on:
+- **Consistency**
+- **Power**
+- **Range**
 
 ![Leaderboard](images/Leaderboard.png)
+
+But deeper questions had to be answered:
+- What defines each metric?
+- How are age groups handled?
+- What’s the best way to visually compare performance?
+
+The leaderboard became a blend of UI logic and coaching utility — built using Flutter, with a mix of native-like familiarity and cross-platform flexibility.
+
+---
+
+## Conclusion
+
+Behind every screen was a constant question: “Does this help the coach or player get better?”  
+This thinking shaped the Playar Alpha — a foundation built for feedback, growth, and play.
+
+

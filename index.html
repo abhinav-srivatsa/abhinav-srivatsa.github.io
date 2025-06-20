@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designing the Playar Alpha App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.hugeicons.com/font/icons.css" crossorigin="anonymous">
+    <style>
+        .hgi-stroke {
+            font-size: 2rem;
+            color: #333;
+        }
+        .lightbox-close svg,
+        .close-button svg {
+            width: 1.5em;
+            height: 1.5em;
+            color: #888;
+            transition: color 0.2s;
+        }
+        .lightbox-close:hover svg,
+        .close-button:hover svg {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-fade-top"></div>
+    <main>
+        <article>
+            <h1>Designing the Playar Alpha App</h1>
+            <p class="date">June 20, 2025</p>
+            <p class="author">by <a href="https://abhinavsrivatsa.com/">Abhinav Srivatsa</a></p>
+
+            <p>When we started designing and mapping out the initial experience for Playar's alpha app, which would essentially be the 0.1 version — a first draft. This early stage meant we would progressively gain clearer understanding into how the app should work, what functionalities it should include, and how to make it delightful and engaging for users.</p>
+
+            <p>The design approach was threefold:</p>
+            <ol>
+                <li><strong>Keeping the UI Simple:</strong> A simple and straightforward UI allowed us to test essential functionalities with minimal effort, laying a foundation for later enhancements based on user feedback.</li>
+                <li><strong>Prototype Early:</strong> Our aim was to not only evaluate how things looked but also how they would feel. Early prototyping provided coaches with tangible interactions, enabling them to give meaningful feedback.</li>
+                <li><strong>Gather Feedback and Iterate Quickly:</strong> We prioritized obtaining quick and frequent feedback — even from partially developed versions. This iterative process ensured we continuously identified areas for improvement.</li>
+            </ol>
+
+            <p>The input we received from coaches significantly shaped the direction of our app. Coaches expressed a need to compare student performances, access detailed student-specific statistics and understand macro-level performance trends such as averages. These inputs directly influenced the design priorities and functionalities we implemented.</p>
+
+            <h2 id="core-functionalities">Core Functionalities</h2>
+
+            <p>Based on these inputs, we were able to narrow down the core functionalities for the alpha version of the app:</p>
+            <ul>
+                <li><strong>Leaderboard:</strong> Enables coaches to compare and rank player performances, incorporating an element of gamification to enhance engagement.</li>
+                <li><strong>Player View:</strong> Provides detailed player profiles, offering in-depth statistics and analytics tailored to each individual.</li>
+                <li><strong>Analytics:</strong> Offers a high-level view of overall performance trends, including charts and averages, to help coaches quickly identify patterns and make informed decisions.</li>
+            </ul>
+
+            <img src="images/Core_Functionalities.png" alt="Core Functionalities">
+
+            <p>These core functionalities transitioned into the app's tab bar, accompanied by a <strong>Settings</strong> tab. This structure addressed users immediate questions: "What does this app do, and what can I achieve using it?"</p>
+
+            <img src="images/Tab_Bar.png" alt="Tab Bar">
+
+            <p>The important questions we asked ourselves while designing, to inform our decision or design choices better were:</p>
+            <ul>
+                <li>How do we approach this?</li>
+                <li>Do we gamify it and make the app look and feel playful?</li>
+                <li>Do we keep its look and feel serious, so it keeps the appeal for coaches and players alike?</li>
+                <li>What's the goal of the app?</li>
+                <li>Who is going to use it?</li>
+                <li>How does it inform the user of what they see and how they can interact with the app?</li>
+            </ul>
+
+            <p>We kept asking ourselves these questions and tried finding a balance.</p>
+
+            <h2 id="leaderboard-design">Leaderboard Design</h2>
+
+            <p>Starting with the leaderboard, I tried to keep the approach to fit well with native and non-native UI elements. Since the alpha was built using Flutter for cross-platform build. The app design is mostly non-native but has familiar elements from native system components. The leaderboard screen is the first screen a coach sees when he logs into the coach side of the app. Leaderboard does two things: a. offers comparison for coaches to understand who is the best performer and who is not and by how much, etc. For the alpha, the focus was on three categories, consistency, power and range.</p>
+
+            <p>The question is, how does the coach understand what these parameters mean, what values is it looking at, how are these players categorized, what are the values or metrics the coach must be able to see for a better understanding of it. There are players of different age groups, how are they categorized, etc. These were some questions, the leaderboard section had to incorporate in the design approach of it.</p>
+
+            <img src="images/Leaderboard.png" alt="Leaderboard">
+        </article>
+    </main>
+
+    <div class="scroll-fade-bottom"></div>
+
+    <div class="sticky-pill-container" id="stickyPill">
+        <div class="pill-collapsed">
+            <span class="section-name" id="currentSection"></span>
+            <div class="divider"></div>
+            <span class="reading-time" id="readingTimeContainer">
+                <span id="readingTimeValue" class="time-value"></span>
+                <span>min left</span>
+            </span>
+        </div>
+        <div class="pill-expanded">
+            <div class="pill-header">
+                <span>Article Sections</span>
+                <button class="close-button" id="closePillButton" aria-label="Close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <ul class="section-list" id="sectionList">
+            </ul>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Container -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- PILL LOGIC ---
+            const stickyPill = document.getElementById('stickyPill');
+            const currentSectionSpan = document.getElementById('currentSection');
+            const readingTimeValueSpan = document.getElementById('readingTimeValue');
+            const sectionList = document.getElementById('sectionList');
+            const article = document.querySelector('article');
+            const sections = Array.from(article.querySelectorAll('h2'));
+            const mainHeading = article.querySelector('h1');
+            const html = document.documentElement;
+            const closePillButton = document.getElementById('closePillButton');
+
+            const wordsPerMinute = 225;
+            const text = article ? article.textContent || '' : '';
+            const wordCount = text.split(/\s+/).length;
+            const totalReadingTime = Math.ceil(wordCount / wordsPerMinute);
+            let lastMinute = totalReadingTime;
+
+            readingTimeValueSpan.textContent = totalReadingTime;
+
+            const createLink = (section, text, target) => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.textContent = text;
+                link.href = `#${target}`;
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    stickyPill.classList.remove('expanded');
+                    setTimeout(() => {
+                        const element = target === 'top' ? document.body : document.getElementById(target);
+                        if (element) element.scrollIntoView({ behavior: 'smooth' });
+                    }, 400);
+                });
+                listItem.appendChild(link);
+                sectionList.appendChild(listItem);
+            };
+
+            if (mainHeading) {
+                createLink(mainHeading, mainHeading.textContent, 'top');
+                sections.forEach(section => createLink(section, section.textContent, section.id));
+            }
+            
+            const updatePill = () => {
+                const scrollTop = window.scrollY;
+                const scrollHeight = html.scrollHeight - html.clientHeight;
+                const scrollPercent = scrollTop / scrollHeight;
+                const timeElapsed = totalReadingTime * scrollPercent;
+                const timeRemaining = Math.max(0, Math.ceil(totalReadingTime - timeElapsed));
+
+                if (timeRemaining !== lastMinute) {
+                    readingTimeValueSpan.classList.add('animate-out');
+                    setTimeout(() => {
+                        readingTimeValueSpan.textContent = timeRemaining;
+                        readingTimeValueSpan.classList.remove('animate-out');
+                        readingTimeValueSpan.classList.add('animate-in');
+                        setTimeout(() => readingTimeValueSpan.classList.remove('animate-in'), 300);
+                    }, 300);
+                    lastMinute = timeRemaining;
+                }
+
+                if (!mainHeading) return;
+                let activeSection = mainHeading;
+                for (let i = sections.length - 1; i >= 0; i--) {
+                    if (scrollTop >= sections[i].offsetTop - 150) {
+                        activeSection = sections[i];
+                        break;
+                    }
+                }
+                currentSectionSpan.textContent = activeSection.textContent;
+            };
+
+            stickyPill.addEventListener('click', (e) => {
+                if (e.target.closest('a') || e.target.closest('.close-button')) return;
+                stickyPill.classList.add('expanded');
+            });
+            closePillButton.addEventListener('click', () => stickyPill.classList.remove('expanded'));
+
+            window.addEventListener('scroll', updatePill, { passive: true });
+            updatePill();
+
+            // --- IMAGE LIGHTBOX LOGIC ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const articleImages = article ? article.querySelectorAll('img') : [];
+
+            const openLightbox = (e) => {
+                lightbox.classList.add('visible');
+                lightboxImg.src = e.target.src;
+            };
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('visible');
+            };
+
+            articleImages.forEach(img => img.addEventListener('click', openLightbox));
+            document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightbox();
+            });
+        });
+    </script>
+</body>
+</html>

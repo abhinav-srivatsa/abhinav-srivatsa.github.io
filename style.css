@@ -1,0 +1,369 @@
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgb(29, 29, 31);
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 2rem 0;
+}
+
+main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    padding-top: 5rem;
+}
+
+a {
+    color: rgb(0, 136, 255);
+    text-decoration: none;
+}
+
+
+strong {
+    font-variation-settings: 'wght' 600;
+}
+
+
+article h1 {
+    font-size: 20px;
+    font-variation-settings: 'wght' 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+article h2 {
+    font-size: 18px;
+    font-variation-settings: 'wght' 550;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+article .date {
+    color: rgb(108, 108, 113);
+    margin-top: 0;
+    margin-bottom: 3rem;
+}
+
+article p {
+    font-size: 16px;
+    margin-bottom: 1.5rem;
+}
+
+article ul,
+article ol {
+    padding-left: 20px;
+    margin-bottom: 1.5rem;
+}
+
+article li {
+    margin-bottom: 0.75rem;
+}
+
+article img {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+article strong {
+    font-weight: 700;
+}
+
+.scroll-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    mask-image: linear-gradient(to bottom, black, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-blur.visible {
+    opacity: 1;
+}
+
+/* Sticky Pill Styles -- V-Final (Smooth Animation) */
+.sticky-pill-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 999px;
+    border: 1px solid #0000000e;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -5px rgba(0, 0, 0, 0.05);
+    height: 48px;
+    width: auto;
+    overflow: hidden;
+    /* 
+     * A refined cubic-bezier for a fast, smooth "ease-out" animation.
+     * This makes the initial expansion feel responsive and quick.
+     */
+    transition: width 0.08s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.08s cubic-bezier(0.16, 1, 0.3, 1),
+                border-radius 0.08s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sticky-pill-container.expanded {
+    width: 340px;
+    height: auto;
+    border-radius: 24px;
+    cursor: default;
+}
+
+.pill-collapsed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    height: 48px;
+    white-space: nowrap;
+    /* The collapsed content fades out very quickly on expand */
+    transition: opacity 0.15s ease-out;
+}
+
+.sticky-pill-container.expanded .pill-collapsed {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.section-name {
+    font-weight: 500;
+    font-size: 14px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+}
+
+.divider {
+    width: 1px;
+    height: 16px;
+    background-color: #e0e0e0;
+    margin: 0 16px;
+}
+
+.reading-time {
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+}
+
+.time-value {
+    display: inline-block;
+    font-weight: 500;
+}
+
+/* Reading Time Number Animation */
+.time-value.animate-out {
+    animation: opacity-blur 2s ease-in forwards; /* Blur out the reading time number */
+}
+.time-value.animate-in {
+    animation: opacity-blur 2s ease-out forwards; /* Blur in the reading time number */
+}
+
+@keyframes slide-out {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-100%); opacity: 0; }
+}
+
+@keyframes slide-in {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.pill-expanded {
+    padding: 0 0.5rem 1rem 0.5rem;
+    opacity: 0;
+    transform: scale(0.97) translateY(5px);
+    pointer-events: none;
+    /*
+     * The content animation is delayed to start after the container expands.
+     * This separation is key to the smooth, non-jagged feel.
+     */
+    transition: opacity 0.25s ease-in 0.1s, transform 0.25s ease-in 0.1s;
+}
+
+.sticky-pill-container.expanded .pill-expanded {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+
+.pill-header {
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.75rem;
+    line-height: 1;
+    color: #aaa;
+    border-radius: 99px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.close-button:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.section-list {
+    list-style: none;
+    padding: 0 0.5rem 0.5rem;
+    margin: 0;
+}
+
+.section-list li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #111;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+}
+
+.section-list li a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Scroll Fade Effects */
+.scroll-fade-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    background: linear-gradient(to bottom, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0));
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-fade-top.visible {
+    opacity: 1;
+}
+
+.scroll-fade-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    background: linear-gradient(to top, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0));
+    z-index: 10;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-fade-bottom.hidden {
+    opacity: 0;
+}
+
+/* Image Lightbox Styles */
+article img {
+    cursor: zoom-in;
+}
+
+.lightbox {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s ease 0.3s;
+}
+
+.lightbox.visible {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.lightbox.visible .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.lightbox-close svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+    color: #aaa;
+}
+
+.lightbox-close:hover {
+    opacity: 1;
+}
+
+.lightbox-close:hover svg {
+    color: #000000;
+}

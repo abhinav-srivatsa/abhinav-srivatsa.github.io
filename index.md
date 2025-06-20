@@ -1,3 +1,9 @@
+---
+layout: default
+title: Behind Playar – Alpha App Design Journal
+description: A design narrative exploring the decisions behind the alpha version of the Playar app.
+---
+
 When we started designing and mapping out the initial experience for Playar’s alpha app, which would essentially be the 0.1 version — a first draft. This early stage meant we would progressively gain clearer understanding into how the app should work, what functionalities it should include, and how to make it delightful and engaging for users. 
 
 The design approach was threefold: -

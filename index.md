@@ -1,0 +1,48 @@
+When we started designing and mapping out the initial experience for Playar’s alpha app, which would essentially be the 0.1 version — a first draft. This early stage meant we would progressively gain clearer understanding into how the app should work, what functionalities it should include, and how to make it delightful and engaging for users. 
+
+The design approach was threefold: -
+
+1. **Keep the UI Simple:** A simple and straightforward UI allowed us to test essential functionalities with minimal effort, laying a foundation for later enhancements based on user feedback.
+<br>
+2. **Prototype Early:** Our aim was to not only evaluate how things looked but also how they would feel. Early prototyping provided coaches with tangible interactions, enabling them to give meaningful feedback.
+<br>
+3. **Gather Feedback and Iterate Quickly:** We prioritized obtaining quick and frequent feedback — even from partially developed versions. This iterative process ensured we continuously identified areas for improvement.
+
+The input we received from coaches significantly shaped the direction of our app. Coaches expressed a need to compare student performances, access detailed student-specific statistics and understand macro-level performance trends such as averages. These inputs directly influenced the design priorities and functionalities we implemented.
+
+# Design
+
+Based on these inputs, we were able to narrow down the core functionalities for the alpha version of the app:
+
+- **Leaderboard:** Enables coaches to compare and rank player performances, incorporating an element of gamification to enhance engagement.
+<br>
+- **Player View:** Provides detailed player profiles, offering in-depth statistics and analytics tailored to each individual.
+<br>
+- **Analytics:** Offers a high-level view of overall performance trends, including charts and averages, to help coaches quickly identify patterns and make informed decisions.
+
+![Core_Functionalities](images/Core_Functionalities.png)
+
+
+These core functionalities transitioned into the app's tab bar, accompanied by a **Settings** tab. This structure addressed users immediate questions: "What does this app do, and what can I achieve using it?"
+
+![Tab_Bar](images/Tab_Bar.png)
+
+The important question we asked ourselves while designing was, to inform our decision or design choices better were - 
+
+- how do we approach this? 
+- Do we gamify it and make the app look and feel playful?
+- Do we keep it's look and feel serious, so it keeps the appeal for caoches and players alike?
+- What's the goal of the app
+- Who is going to use it
+- How does it inform the user of what they see and how they can interact with the app.
+
+We kept asking ourselves questions and tired finding a balance to it.
+
+
+## Design
+
+Starting with the leaderboard, I tried to keep the approach to fit well with native and non-native UI elements. Since the alpha was built using Flutter for cross-platform build. The app design is mostly non-native but has familiar elements from native system components. The leaderboard screen is the first screen a coach sees when he logs into the coach side of the app. Leaderboard does two things - a. offers comparisson for coaches to understand who is the best performer and who is not and by how much, etc. For the alpha, the focus was on three categories, consistency, power and range. 
+
+Question is, how does the coach understand what these parameters mean, what values is it looking at, how are these players categorized, what are the values or metrics the coach must be able to see for a better understanding of it. There are players of different age groups, how are they categorized, etc. These were some questions, the leaderboard section had to incorporate in the design approach of it.
+
+![Leaderboard](images/Leaderboard.png)

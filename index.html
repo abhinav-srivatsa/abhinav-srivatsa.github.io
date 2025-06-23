@@ -46,7 +46,7 @@
 
             <p>The input we received from coaches significantly shaped the direction of our app. Coaches expressed a need to compare student performances, access detailed student-specific statistics and understand macro-level performance trends such as averages. These inputs directly influenced the design priorities and functionalities we implemented.</p>
 
-            <h2 id="core-functionalities">Core Functionalities</h2>
+            <h2 id="core-functions">Core Functions</h2>
 
             <p>Based on these inputs, we were able to narrow down the core functionalities for the alpha version of the app:</p>
             <ul>
@@ -61,23 +61,36 @@
 
             <img src="images/Tab_Bar.png" alt="Tab Bar">
 
-            <p>The important questions we asked ourselves while designing, to inform our decision or design choices better were:</p>
+            <p>During our design process, we continually revisited several important questions to guide our decisions:</p>
             <ul>
-                <li>How do we approach this?</li>
-                <li>Do we gamify it and make the app look and feel playful?</li>
-                <li>Do we keep its look and feel serious, so it keeps the appeal for coaches and players alike?</li>
-                <li>What's the goal of the app?</li>
-                <li>Who is going to use it?</li>
-                <li>How does it inform the user of what they see and how they can interact with the app?</li>
+                <li>How should we approach this?</li>
+                <li>Should we gamify the app and give it a playful feel?</li>
+                <li>Would a serious aesthetic better resonate with coaches and players alike?</li>
+                <li>What is the ultimate goal of the app?</li>
+                <li>Who are our primary users?</li>
+                <li>How clearly does the app inform users about what they are seeing and how they can interact with it?</li>
             </ul>
 
-            <p>We kept asking ourselves these questions and tried finding a balance.</p>
+            <p>As we explored these questions, we aimed to strike a careful balance, ensuring the design would resonate well with our users.</p>
 
-            <h2 id="leaderboard-design">Leaderboard Design</h2>
+            <h2 id="design-approach">Design Approach</h2>
 
-            <p>Starting with the leaderboard, I tried to keep the approach to fit well with native and non-native UI elements. Since the alpha was built using Flutter for cross-platform build. The app design is mostly non-native but has familiar elements from native system components. The leaderboard screen is the first screen a coach sees when he logs into the coach side of the app. Leaderboard does two things: a. offers comparison for coaches to understand who is the best performer and who is not and by how much, etc. For the alpha, the focus was on three categories, consistency, power and range.</p>
+            <p>We started with the leaderboard because it immediately communicates value to coaches.</p>
+            <p>When a coach logs in, the leaderboard answers two core needs:</p>
+            <ol>
+                <li><strong>Performance Comparison:</strong> Coaches can quickly see who is excelling, who needs support, and by what margin.</li>
+                <li><strong>Focused Metrics:</strong> In this alpha, we concentrated on three critical categories — <strong>consistency</strong>, <strong>power</strong>, and <strong>range</strong>, to keep the interface clear and meaningful.</li>
+            </ol>
 
-            <p>The question is, how does the coach understand what these parameters mean, what values is it looking at, how are these players categorized, what are the values or metrics the coach must be able to see for a better understanding of it. There are players of different age groups, how are they categorized, etc. These were some questions, the leaderboard section had to incorporate in the design approach of it.</p>
+            <p>Some design considerations included:</p>
+
+            <ul>
+                <li><strong>Metric Definitions:</strong> Clearly labeling each category so coaches instantly understand what consistency, power, and range represent.</li>
+                <li><strong>Age Group Categorization:</strong> Organizing players into age brackets to ensure fair comparisons and relevant context.</li>
+                <li><strong>Visual Visibility:</strong> Displaying raw metric values and visual indicators for at-a-glance comprehension.</li>
+            </ul>     
+
+            <p>By addressing these questions in the leaderboard design, we ensured coaches could dive straight into insights without confusion, setting a strong foundation for the rest of the app. </p>
 
             <img src="images/Leaderboard.png" alt="Leaderboard">
         </article>
@@ -122,110 +135,7 @@
         <img class="lightbox-content" id="lightboxImg">
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- PILL LOGIC ---
-            const stickyPill = document.getElementById('stickyPill');
-            const currentSectionSpan = document.getElementById('currentSection');
-            const readingTimeValueSpan = document.getElementById('readingTimeValue');
-            const sectionList = document.getElementById('sectionList');
-            const article = document.querySelector('article');
-            const sections = Array.from(article.querySelectorAll('h2'));
-            const mainHeading = article.querySelector('h1');
-            const html = document.documentElement;
-            const closePillButton = document.getElementById('closePillButton');
-
-            const wordsPerMinute = 225;
-            const text = article ? article.textContent || '' : '';
-            const wordCount = text.split(/\s+/).length;
-            const totalReadingTime = Math.ceil(wordCount / wordsPerMinute);
-            let lastMinute = totalReadingTime;
-
-            readingTimeValueSpan.textContent = totalReadingTime;
-
-            const createLink = (section, text, target) => {
-                const listItem = document.createElement('li');
-                const link = document.createElement('a');
-                link.textContent = text;
-                link.href = `#${target}`;
-                link.addEventListener('click', e => {
-                    e.preventDefault();
-                    stickyPill.classList.remove('expanded');
-                    setTimeout(() => {
-                        const element = target === 'top' ? document.body : document.getElementById(target);
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
-                    }, 400);
-                });
-                listItem.appendChild(link);
-                sectionList.appendChild(listItem);
-            };
-
-            if (mainHeading) {
-                createLink(mainHeading, mainHeading.textContent, 'top');
-                sections.forEach(section => createLink(section, section.textContent, section.id));
-            }
-            
-            const updatePill = () => {
-                const scrollTop = window.scrollY;
-                const scrollHeight = html.scrollHeight - html.clientHeight;
-                const scrollPercent = scrollTop / scrollHeight;
-                const timeElapsed = totalReadingTime * scrollPercent;
-                const timeRemaining = Math.max(0, Math.ceil(totalReadingTime - timeElapsed));
-
-                if (timeRemaining !== lastMinute) {
-                    readingTimeValueSpan.classList.add('animate-out');
-                    setTimeout(() => {
-                        readingTimeValueSpan.textContent = timeRemaining;
-                        readingTimeValueSpan.classList.remove('animate-out');
-                        readingTimeValueSpan.classList.add('animate-in');
-                        setTimeout(() => readingTimeValueSpan.classList.remove('animate-in'), 300);
-                    }, 300);
-                    lastMinute = timeRemaining;
-                }
-
-                if (!mainHeading) return;
-                let activeSection = mainHeading;
-                for (let i = sections.length - 1; i >= 0; i--) {
-                    if (scrollTop >= sections[i].offsetTop - 150) {
-                        activeSection = sections[i];
-                        break;
-                    }
-                }
-                currentSectionSpan.textContent = activeSection.textContent;
-            };
-
-            stickyPill.addEventListener('click', (e) => {
-                if (e.target.closest('a') || e.target.closest('.close-button')) return;
-                stickyPill.classList.add('expanded');
-            });
-            closePillButton.addEventListener('click', () => stickyPill.classList.remove('expanded'));
-
-            window.addEventListener('scroll', updatePill, { passive: true });
-            updatePill();
-
-            // --- IMAGE LIGHTBOX LOGIC ---
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightboxImg');
-            const articleImages = article ? article.querySelectorAll('img') : [];
-
-            const openLightbox = (e) => {
-                lightbox.classList.add('visible');
-                lightboxImg.src = e.target.src;
-            };
-
-            const closeLightbox = () => {
-                lightbox.classList.remove('visible');
-            };
-
-            articleImages.forEach(img => img.addEventListener('click', openLightbox));
-            document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) closeLightbox();
-            });
-            window.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeLightbox();
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/motion@10.18.0/dist/motion.min.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

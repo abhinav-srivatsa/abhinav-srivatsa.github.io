@@ -6,7 +6,7 @@ Built using **HTML**, **CSS**, and **JavaScript**, and deployed with **GitHub Pa
 
 **🔗 Live Site:** [https://abhinav-srivatsa.github.io](https://abhinav-srivatsa.github.io)
 
-
+<br>
 
 ## Features
 
@@ -15,7 +15,7 @@ Built using **HTML**, **CSS**, and **JavaScript**, and deployed with **GitHub Pa
 - Lightweight: no frameworks or build tools required
 - Supports future enhancements like [Motion One](https://motion.dev) or Framer Motion animations
 
-
+<br>
 
 ## Project Structure
 
@@ -28,10 +28,10 @@ Built using **HTML**, **CSS**, and **JavaScript**, and deployed with **GitHub Pa
   - `Tab_Bar.png`  
 - `.nojekyll` — Ensures GitHub Pages doesn't ignore folders like `_assets`
 
-
+<br>
 
 ## Credits
-Design & Development: Abhinav Srivatsa
-Typography: Inter
-Hosting: GitHub Pages
+- Design & Development: Abhinav Srivatsa
+- Typography: Inter
+- Hosting: GitHub Pages
 
